@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/buy": {
+      "post": {
+        "operationId": "AppController_publishMessage",
+        "summary": "Create example data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePurchaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The purchase sent to the server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePurchaseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAllUserBuys": {
+      "get": {
+        "operationId": "AppController_getAllBuysFromServer",
+        "summary": "Get example data",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreatePurchaseDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "My API",
+    "description": "API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreatePurchaseDto": {
+        "type": "object",
+        "properties": {
+          "productName": {
+            "type": "string",
+            "description": "The product name"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the person who made the purchase"
+          },
+          "price": {
+            "type": "number",
+            "description": "The total amount price of the purchase"
+          },
+          "age": {
+            "type": "number",
+            "description": "The age of the person who made the purchase"
+          }
+        },
+        "required": [
+          "productName",
+          "name",
+          "price",
+          "age"
+        ]
+      }
+    }
+  }
+}

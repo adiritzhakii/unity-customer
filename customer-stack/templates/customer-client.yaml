@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-client
+  template:
+    metadata:
+      labels:
+        app: customer-client
+    spec:
+      containers:
+        - name: customer-client
+          image: customer-client:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 80
+          env:
+            - name: SERVER_URL
+              value: customer-facing-web-server:3001
